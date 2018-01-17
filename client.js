@@ -20,6 +20,6 @@ function fetchWeatherData(data) {
         var elm = data.list[i];
         var date = new Date(elm.dt * 1000);
         if (date.getDay() === tomorrow.getDay() && date.getMonth() == tomorrow.getMonth() && date.getFullYear() == tomorrow.getFullYear())
-            $('#dates').append("<li> " + date + " -  Temp: " + elm.main.temp + " - Sky: " + elm.weather[0].description + " - Wind-speed: " + elm.wind.speed + "</li>"); // change 
+            $('#dates').append("<li> " + elm.dt_txt + " -  Temp: " + elm.main.temp + " - Sky: " + elm.weather[0].description + " - Wind-speed: " + elm.wind.speed + "</li>"); // change 
     }
 }
