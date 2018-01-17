@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as request from 'request';
 import * as bodyparser from 'body-parser';
 import * as qs from 'query-string';
+import * as httpstatus from 'http-status-codes';
 let app = express();
 
 app.use(bodyparser.json());
@@ -35,9 +36,9 @@ app.get("/weather", (req, res) => {
         }
     }, (error, response, body) => {
         if (error)
-            res.status(400).send(); // change status
+            res.status(httpstatus.GATEWAY_TIMEOUT).send();
         else
-            res.status(200).json(body);
+            res.status(httpstatus.OK).json(body);
     });
 
     

@@ -4,6 +4,7 @@ var express = require("express");
 var request = require("request");
 var bodyparser = require("body-parser");
 var qs = require("query-string");
+var httpstatus = require("http-status-codes");
 var app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -30,9 +31,9 @@ app.get("/weather", function (req, res) {
         }
     }, function (error, response, body) {
         if (error)
-            res.status(400).send(); // change status
+            res.status(httpstatus.GATEWAY_TIMEOUT).send();
         else
-            res.status(200).json(body);
+            res.status(httpstatus.OK).json(body);
     });
 });
 app.listen(app.get('port'), function () {
