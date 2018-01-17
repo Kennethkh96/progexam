@@ -1,9 +1,49 @@
 import * as express from 'express';
+import * as request from 'request';
+import * as bodyparser from 'body-parser';
+import * as qs from 'query-string';
 let app = express();
+
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
+
 app.set('port', (process.env.PORT || 3000));
 
-app.get('/', (req, res) => {
-    res.send("poato");
+app.get('/client.js', (req, res) => {
+    res.sendFile(__dirname + "/client.js");
 });
 
-app.listen(app.get('port')); 
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+});
+
+app.get("/weather", (req, res) => {
+    let params =     qs.stringify({
+        q: 'viborg,DNK',
+        APPID: 'c5fe9a65b85913e0f1e3be2a9a88493a',
+        mode: 'JSON',
+        units: 'metric'
+    });
+    
+    let uri = "https://api.openweathermap.org/data/2.5/forecast?" + params;
+
+    request({
+        uri,
+        method: "get",
+        headers: {
+            'Accept': 'application/json'
+        }
+    }, (error, response, body) => {
+        if (error)
+            res.status(400).send(); // change status
+        else
+            res.status(200).json(body);
+    });
+
+    
+});
+
+app.listen(app.get('port'), () => {
+    console.log(`Listening on port ${app.get('port')}...`);
+});
+

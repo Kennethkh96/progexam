@@ -1,25 +1,16 @@
 {
-  "name": "progexam",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": ""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kennethkh96/progexam.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Kennethkh96/progexam/issues"
-  },
-  "homepage": "https://github.com/Kennethkh96/progexam#readme",
+  "name": "",
+  "version": "",
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "query-string": "^5.0.1",
+    "request": "^2.83.0"
   },
   "devDependencies": {
-    "@types/express": "^4.11.0"
+    "@types/body-parser": "^1.16.8",
+    "@types/express": "^4.11.0",
+    "@types/query-string": "^5.0.1",
+    "@types/request": "^2.0.10"
   }
 }
