@@ -1,10 +1,10 @@
-declare let $: any;
+﻿declare let $: any;
 
 $(document).ready(getWeather);
 
 function getWeather()
 {
-    $.ajax({
+    $.ajax({ 
         method: 'get',
         url: '/weather',
         success: (res: any) => {
